@@ -1,9 +1,18 @@
-import requests
-def test_website_loads_properly():
-    response = requests.get("https://atg.world")
-    assert response.status_code == 200
-def test_website_loads_properly():
-    print("Starting website load test...")
-    response = requests.get("https://atg.world")
-    assert response.status_code == 200
-    print("Website loaded successfully!")
+import unittest
+from selenium import webdriver
+
+class TestATGWebsite(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://atg.world")
+
+    def test_website_loading(self):
+        title = self.driver.title
+        self.assertEqual(title, "ATG.World")
+
+    def tearDown(self):
+        self.driver.quit()
+
+if __name__ == "__main__":
+    unittest.main()
