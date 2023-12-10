@@ -65,17 +65,22 @@ Edit Apache Configuration file
 Then, In the file enter the following code snippet to make the Apache works for Jenkins. Then, In this ServerName should be your domain name, ProxyPass should point your localhost point to Jenkins (Port 8080) and ProxyPassReverse should be added for both localhost address and Domain address. In the block, we need to give access to the apache to handle the Jenkins.
 
 --->
-<Virtualhost *:80>
-    ServerName        your-domain-name.com
-    ProxyRequests     Off
-    ProxyPreserveHost On
-    AllowEncodedSlashes NoDecode
- 
+
+
+
+
+
+ <Virtualhost *:80>
+    ServerName	       jenkins.shinnudevops.tech
+    ProxyRequests        off
+    ProxyPreserveHost    on
+    AllowEncodedSlashes  NoDecode
+    
     <Proxy http://localhost:8080/*>
       Order deny,allow
       Allow from all
     </Proxy>
- 
+
     ProxyPass         /  http://localhost:8080/ nocanon
     ProxyPassReverse  /  http://localhost:8080/
     ProxyPassReverse  /  http://your-domain-name.com/
