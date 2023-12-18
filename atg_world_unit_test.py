@@ -16,3 +16,5 @@ class TestATGWebsite(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    print("Step 8: Running the test.")
+    unittest.main()
